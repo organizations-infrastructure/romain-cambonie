@@ -4,7 +4,7 @@ terraform {
     organization = "organizations-infrastructure"
 
     workspaces {
-      name = "WORKSPACE"
+      name = "romain-cambonie"
     }
   }
 

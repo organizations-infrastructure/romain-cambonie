@@ -1,0 +1,82 @@
+locals {
+  project = {
+    name                         = "romain-cambonie"
+    github_organization          = "romain-cambonie-organization"
+    terraform_cloud_organization = "romain-cambonie"
+    aws_organizational_unit      = "romain-cambonie"
+    commit_author                = "github-actions[bot]"
+    commit_email                 = "github-actions[bot]@users.noreply.github.com"
+    organization_email           = "romain.cambonie@gmail.com"
+    aws_root_id                  = "r-gw1z"
+    aws_management_account       = "ma-ou-rc"
+    aws_management_email         = "romain.cambonie+ma-ou-rc@gmail.com"
+    terraform_organization_variables = {
+      "project" = {
+        hcl         = false
+        sensitive   = false
+        value       = "romain-cambonie"
+        description = "The project name in the Project-Service-Layer architecture"
+      }
+      "terraform_organization" = {
+        hcl         = false
+        sensitive   = false
+        value       = "romain-cambonie"
+        description = "The organization name on terraform cloud"
+      }
+      "aws_default_region" = {
+        hcl         = false
+        sensitive   = false
+        value       = "us-east-1"
+        description = "The aws default region"
+      }
+      "domain_name" = {
+        hcl         = false
+        sensitive   = false
+        value       = "DOMAIN"
+        description = "The registered domain name (does not need to be registered yet but check availability)"
+      }
+      "sender_id" = {
+        hcl         = false
+        sensitive   = false
+        value       = "SENDER_ID"
+        description = "Sender id for transactional sms (auth). Maximum 11 alphanumeric or hyphen (-) characters, including at least one letter and no spaces. It has to start and end with an alphanumeric character."
+      }
+      "domain_email_forward_addresses" = {
+        hcl         = false
+        sensitive   = false
+        value       = "['EMAIL_1','EMAIL_2']"
+        description = "The emails addresses to forward the emails sent to the SES verified domain"
+      }
+      "notification_webhook" = {
+        hcl         = false
+        sensitive   = true
+        value       = var.notification_webhook
+        description = "A webhook url to notify about deployments"
+      }
+    }
+    github_organization_secrets = {
+      "tfe_team_token" = {
+        github_key    = "TF_API_TOKEN"
+        terraform_key = "tfe_team_token"
+      }
+    }
+    github_organization_variables = {
+      "cloudfront_s3_bucket" = {
+        github_key    = "CLOUDFRONT_S3_BUCKET"
+        terraform_key = "cloudfront_s3_bucket"
+      }
+      "cloudfront_distribution_id" = {
+        github_key    = "CLOUDFRONT_DISTRIBUTION_ID"
+        terraform_key = "cloudfront_distribution_id"
+      }
+      "cognito_app_integration_id" = {
+        github_key    = "COGNITO_APP_INTEGRATION_ID"
+        terraform_key = "cognito_app_integration_id"
+      }
+      "aws_default_region" = {
+        github_key    = "AWS_DEFAULT_REGION"
+        terraform_key = "aws_default_region"
+      }
+    }
+  }
+}
