@@ -16,6 +16,7 @@ locals {
           "Action" : [
             "ec2:CreateVpc",
             "ec2:DescribeVpcs",
+            "ec2:DescribeNetworkInterfaces",
             "ec2:DescribeVpcAttribute",
             "ec2:ModifyVpcAttribute",
             "ec2:DeleteVpc",
