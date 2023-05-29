@@ -1,4 +1,5 @@
 locals {
+  first_run = false #set to false after initial repositories run
   project = {
     name                         = "romain-cambonie"
     github_organization          = "romain-cambonie-organization"
