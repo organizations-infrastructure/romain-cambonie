@@ -63,8 +63,8 @@ jobs:
     uses: codingones/github-actions-workflows/.github/workflows/notify-discord.yml@main
     with:
       bot-username: Successes Bot
-      notification-content: The organization taxi-gestion has been updated !
+      notification-content: The organization romain-cambonie-organization has been updated !
       embed-title: Go to the organization repositories
-      embed-url: https://github.com/orgs/taxi-gestion/repositories?q=&type=all&language=&sort=name
+      embed-url: https://github.com/orgs/romain-cambonie-organization/repositories?q=&type=all&language=&sort=name
     secrets:
       DISCORD_WEBHOOK: ${{ secrets.DISCORD_SUCCESSES_WEBHOOK }}

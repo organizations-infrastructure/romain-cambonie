@@ -1,5 +1,5 @@
 locals {
-  first_run = false #set to false after initial repositories run
+  first_run = true #set to false after initial repositories run
   project = {
     name                         = "romain-cambonie"
     github_organization          = "romain-cambonie-organization"
@@ -11,6 +11,7 @@ locals {
     aws_root_id                  = "r-gw1z"
     aws_management_account       = "ma-ou-rc"
     aws_management_email         = "romain.cambonie+ma-ou-rc@gmail.com"
+    about                        = "myself"
     terraform_organization_variables = {
       "project" = {
         hcl         = false
