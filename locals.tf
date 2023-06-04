@@ -46,7 +46,7 @@ locals {
       "domain_email_forward_addresses" = {
         hcl         = false
         sensitive   = false
-        value       = "['EMAIL_1','EMAIL_2']"
+        value       = "['romain.cambonie@gmail.com']"
         description = "The emails addresses to forward the emails sent to the SES verified domain"
       }
       "github_pat" = {
@@ -57,19 +57,19 @@ locals {
       }
       "notification_webhook_failures" = {
         hcl         = false
-        sensitive   = true
+        sensitive   = false
         value       = var.notification_webhook_failures
         description = "A webhook url to notify about deployments"
       }
       "notification_webhook_successes" = {
         hcl         = false
-        sensitive   = true
+        sensitive   = false
         value       = var.notification_webhook_successes
         description = "A webhook url to notify about deployments"
       }
       "notification_webhook_releases" = {
         hcl         = false
-        sensitive   = true
+        sensitive   = false
         value       = var.notification_webhook_releases
         description = "A webhook url to notify about deployments"
       }
