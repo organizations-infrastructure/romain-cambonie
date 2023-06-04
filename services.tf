@@ -20,48 +20,52 @@ locals {
       deployer_policy                      = local.policies.vpc-infrastructure
       allow_force_pushes_to_default_branch = true
       templated_files_variables            = merge(local.common-services-variables, { __REPOSITORY = "vpc-infrastructure" })
+      template_fork                        = false
     }
     domain = {
       template                             = "codingones-github-templates/aws-service-domain"
       templated_files_variables            = merge(local.common-services-variables, { __REPOSITORY = "domain-infrastructure" })
       deployer_policy                      = local.policies.domain-infrastructure
       allow_force_pushes_to_default_branch = true
+      template_fork                        = false
     }
     email = {
       template                             = "codingones-github-templates/aws-service-email"
       templated_files_variables            = merge(local.common-services-variables, { __REPOSITORY = "email-infrastructure" })
       deployer_policy                      = local.policies.email-infrastructure
       allow_force_pushes_to_default_branch = true
+      template_fork                        = false
     }
-    identity = {
-      template                             = "codingones-github-templates/aws-service-identity"
-      templated_files_variables            = merge(local.common-services-variables, { __REPOSITORY = "identity-infrastructure" })
-      deployer_policy                      = local.policies.identity-infrastructure
-      allow_force_pushes_to_default_branch = true
-    }
-    persistence = {
-      template                             = "codingones-github-templates/aws-service-persistence"
-      templated_files_variables            = merge(local.common-services-variables, { __REPOSITORY = "persistence-infrastructure" })
-      deployer_policy                      = local.policies.persistence-infrastructure
-      allow_force_pushes_to_default_branch = true
-    }
-    registry = {
-      template                             = "codingones-github-templates/aws-service-registry"
-      templated_files_variables            = merge(local.common-services-variables, { __REPOSITORY = "registry-infrastructure" })
-      deployer_policy                      = local.policies.registry-infrastructure
-      allow_force_pushes_to_default_branch = true
-    }
-    api = {
-      template                             = "codingones-github-templates/aws-service-api"
-      templated_files_variables            = merge(local.common-services-variables, { __REPOSITORY = "api-infrastructure" })
-      deployer_policy                      = local.policies.api-infrastructure
-      allow_force_pushes_to_default_branch = true
-    }
+    #identity = {
+    #  template                             = "codingones-github-templates/aws-service-identity"
+    #  templated_files_variables            = merge(local.common-services-variables, { __REPOSITORY = "identity-infrastructure" })
+    #  deployer_policy                      = local.policies.identity-infrastructure
+    #  allow_force_pushes_to_default_branch = true
+    #}
+    #persistence = {
+    #  template                             = "codingones-github-templates/aws-service-persistence"
+    #  templated_files_variables            = merge(local.common-services-variables, { __REPOSITORY = "persistence-infrastructure" })
+    #  deployer_policy                      = local.policies.persistence-infrastructure
+    #  allow_force_pushes_to_default_branch = true
+    #}
+    #registry = {
+    #  template                             = "codingones-github-templates/aws-service-registry"
+    #  templated_files_variables            = merge(local.common-services-variables, { __REPOSITORY = "registry-infrastructure" })
+    #  deployer_policy                      = local.policies.registry-infrastructure
+    #  allow_force_pushes_to_default_branch = true
+    #}
+    #api = {
+    #  template                             = "codingones-github-templates/aws-service-api"
+    #  templated_files_variables            = merge(local.common-services-variables, { __REPOSITORY = "api-infrastructure" })
+    #  deployer_policy                      = local.policies.api-infrastructure
+    #  allow_force_pushes_to_default_branch = true
+    #}
     client = {
       template                             = "codingones-github-templates/aws-service-client"
       templated_files_variables            = merge(local.common-services-variables, { __REPOSITORY = "client-infrastructure" })
       deployer_policy                      = local.policies.client-infrastructure
       allow_force_pushes_to_default_branch = true
+      template_fork                        = false
     }
   }
 }
@@ -78,7 +82,7 @@ module "services" {
   github_repository         = "${each.key}-infrastructure"
   template_repository       = each.value.template
   templated_files_variables = each.value.templated_files_variables
-  template_fork             = false
+  template_fork             = local.first_run || each.value.template_fork
 
   project = local.project.name
   service = each.key

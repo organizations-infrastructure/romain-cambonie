@@ -16,7 +16,7 @@ This repository describe through IAC the romain-cambonie administrative infrastr
 
 ### Generating the infrastructure.
 Run the ['Apply the changes to romain-cambonie-organization' workflow](https://github.com/organizations-infrastructure/romain-cambonie-organization/actions) (time <~ 3 min)
-- The infrastructure services; application and presentation repositories have been created and configured in the [romain-cambonie-organization github organization](https://github.com/ORGANIZATION).
+- The infrastructure services; application and presentation repositories have been created and configured in the [romain-cambonie-organization github organization](https://github.com/romain-cambonie-organization).
 - the [organization admin workspace](https://app.terraform.io/app/organizations-infrastructure/workspaces/romain-cambonie) is created in terraform cloud admin infrastructure.
 - the [organization](https://app.terraform.io/app/romain-cambonie/workspaces) is created in terraform cloud
 - an organizational unit romain-cambonie and a deployer IAM user have been created in AWS.

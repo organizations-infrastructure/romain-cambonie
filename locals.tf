@@ -1,5 +1,5 @@
 locals {
-  first_run = true #set to false after initial repositories run
+  first_run = false #set to false after initial repositories run
   project = {
     name                         = "romain-cambonie"
     github_organization          = "romain-cambonie-organization"
@@ -34,15 +34,15 @@ locals {
       "domain_name" = {
         hcl         = false
         sensitive   = false
-        value       = "DOMAIN"
+        value       = "romain-cambonie.com"
         description = "The registered domain name (does not need to be registered yet but check availability)"
       }
-      "sender_id" = {
-        hcl         = false
-        sensitive   = false
-        value       = "SENDER_ID"
-        description = "Sender id for transactional sms (auth). Maximum 11 alphanumeric or hyphen (-) characters, including at least one letter and no spaces. It has to start and end with an alphanumeric character."
-      }
+      #"sender_id" = {
+      #  hcl         = false
+      #  sensitive   = false
+      #  value       = "SENDER_ID"
+      #  description = "Sender id for transactional sms (auth). Maximum 11 alphanumeric or hyphen (-) characters, including at least one letter and no spaces. It has to start and end with an alphanumeric character."
+      #}
       "domain_email_forward_addresses" = {
         hcl         = false
         sensitive   = false
@@ -105,10 +105,10 @@ locals {
         github_key    = "CLOUDFRONT_DISTRIBUTION_ID"
         terraform_key = "cloudfront_distribution_id"
       }
-      "cognito_app_integration_id" = {
-        github_key    = "COGNITO_APP_INTEGRATION_ID"
-        terraform_key = "cognito_app_integration_id"
-      }
+      #"cognito_app_integration_id" = {
+      #  github_key    = "COGNITO_APP_INTEGRATION_ID"
+      #  terraform_key = "cognito_app_integration_id"
+      #}
       "aws_default_region" = {
         github_key    = "AWS_DEFAULT_REGION"
         terraform_key = "aws_default_region"
