@@ -73,6 +73,12 @@ locals {
         value       = var.notification_webhook_releases
         description = "A webhook url to notify about deployments"
       }
+      "content_security_policy_client" = {
+        hcl         = false
+        sensitive   = false
+        value       = "default-src 'self' data: https://gist.githubusercontent.com/romain-cambonie/ ; font-src 'self'; img-src 'self'; object-src 'none'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; trusted-types angular angular#bundler dompurify; require-trusted-types-for 'script';"
+        description = "The CSP that allow to fetch the gist from github"
+      }
     }
     github_organization_secrets = {
       "tfe_team_token" = {
